@@ -2,9 +2,7 @@ package com.morph.deadline;
 
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.morph.deadline.component.DateTextField;
-import com.sun.javafx.css.converters.FontConverter;
 import dorkbox.notify.Notify;
-import dorkbox.notify.Pos;
 import dorkbox.notify.Theme;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
@@ -124,7 +122,7 @@ public class Deadline extends JFrame implements ActionListener {
     private void initPreferences() {
         preferences = Preferences.userNodeForPackage(Deadline.class);
         String deadline = preferences.get("deadline", null);
-        if (!StringUtils.isEmpty(deadline)){
+        if (!StringUtils.isEmpty(deadline)) {
             deadLine = new Date(Long.parseLong(deadline));
             timer.start();
         }
@@ -221,7 +219,7 @@ public class Deadline extends JFrame implements ActionListener {
             notify(format);
             notified = true;
         }
-        if (minutes != 0 && seconds != 0 && notified){
+        if (minutes != 0 && seconds != 0 && notified) {
             notified = false;
         }
         return format;
@@ -231,8 +229,14 @@ public class Deadline extends JFrame implements ActionListener {
         Notify.create()
               .title("Deadline reminder")
               .text("You have left " + text)
-              .text(new Theme(helveticaBold(20), helveticaBold(18), Color.DARK_GRAY, Color.GRAY, Color.LIGHT_GRAY, Color.GRAY, Color.gray))
-              .image(images.get(14))
+              .text(new Theme(helveticaBold(20),
+                              helveticaBold(18),
+                              Color.DARK_GRAY,
+                              Color.GRAY,
+                              Color.LIGHT_GRAY,
+                              Color.GRAY,
+                              Color.gray))
+              .image(images.get(3))
               .darkStyle()
               .show();
     }
